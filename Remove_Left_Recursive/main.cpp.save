@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    cout << "Remove Left Recursion\n\n" << endl;
+
+    string s;
+    cout<<"Enter Your String :"<<endl;
+    cout << "A -> ";
+    getline(cin, s);
+
+
+    cout<<"\n\n";
+
+    vector<string>vec;
+    string temp="";
+    for(int i=0;i<s.length();i++){
+        if(isspace(s[i])){
+
+        }
+        else if(s[i]!='|'  ||){
+            temp = temp + s[i];
+        }else{
+            vec.push_back(temp);
+            temp.clear();
+        }
+    }
+    vec.push_back(temp);
+
+    vector<string>vec1;
+    vector<string>vec2;
+
+    for(int i=0;i<vec.size();i++){
+        if(vec[i][0]=='A'){
+            vec2.push_back(vec[i]);
+        }else{
+            vec1.push_back(vec[i]);
+        }
+    }
+
+    vector<string>vec3;
+    for(int i=0;i<vec2.size();i++){
+        string temp="";
+        for(int j=0;j<vec2[i].size();j++){
+            if(j!=0){
+                temp = temp + vec2[i][j];
+            }
+        }
+        vec3.push_back(temp);
+    }
+
+
+    cout<<"\n\n";
+
+    cout<<"Your Answer"<<endl;
+    cout<<"A ->";
+    for(int i=0;i<vec1.size()-1;i++){
+        cout<< vec1[i]<<"A' |";
+    }
+    int x=vec1.size();
+    cout<<vec1[x-1]<<"A'";;
+
+    cout<<"\n\n";
+    cout<<"A' ->";
+    for(int i=0;i<vec3.size()-1;i++){
+        cout<< vec3[i]<<"A' |";
+    }
+    int y=vec3.size();
+    cout<<vec3[y-1]<<"A' |"<<"E ";
+
+    cout<<"\n\n";
+    return 0;
+}
+
+
